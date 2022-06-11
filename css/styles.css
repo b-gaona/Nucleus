@@ -1,0 +1,374 @@
+:root {
+  --primario: #6834a6;
+  --blanco: #fff;
+  --negro: #000000;
+  --fuentePrincipal: "Poppins", sans-serif;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: var(--fuentePrincipal);
+  font-size: 1.6rem;
+  line-height: 1.8;
+}
+h1,
+h2,
+h3 {
+  font-weight: 900;
+  margin: 2rem 0;
+}
+h1 {
+  font-size: 5rem;
+}
+h2 {
+  font-size: 4.6rem;
+}
+h3 {
+  font-size: 3rem;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/*Todo aquel que lleve algo y despues contenedor, el $ es cualquier cosa*/
+[class$="__contenedor"] {
+  max-width: 120rem;
+  margin: 0 auto;
+  width: 90%;
+}
+[class$="__titulo"] {
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+/*HEADER*/
+.header {
+  background-image: url("../img/header_bg.svg");
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 10rem;
+  padding: 5rem 0 0;
+}
+@media (min-width: 768px) {
+  .header {
+    background-size: 55rem;
+  }
+}
+@media (min-width: 992px) {
+  .header {
+    background-size: 60rem;
+  }
+}
+@media (min-width: 1280px) {
+  .header {
+    background-size: 85rem;
+  }
+}
+@media (min-width: 768px) {
+  .header__barra {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/*Logo*/
+.header__logo {
+  /*Se centra y se le da un tamaño*/
+  width: 15rem;
+  margin: 0 auto 3rem auto;
+}
+@media (min-width: 768px) {
+  .header__logo {
+    margin: 0;
+  }
+  .header__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    align-items: center;
+  }
+}
+/*Titulo*/
+.header__titulo {
+  font-size: 3rem;
+}
+@media (min-width: 768px) {
+  .header__titulo {
+    text-align: left;
+    font-size: 5rem;
+    line-height: 1.2;
+  }
+}
+/*Imagen celular*/
+@media (min-width: 768px) {
+  .header__imagen {
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+}
+/*Boton*/
+.header__boton {
+  background-color: var(--primario);
+  display: block;
+  padding: 1rem;
+  text-align: center;
+  color: var(--blanco);
+  margin-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .header__boton {
+    width: 60%;
+  }
+}
+
+/*NAVEGACION*/
+.navegacion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .navegacion {
+    grid-column: 2/4;
+    justify-self: flex-end;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+.navegacion__link {
+  color: var(--primario);
+}
+.navegacion__link--footer{
+    color: var(--blanco);
+}
+@media (min-width: 768px) {
+  .navegacion__link {
+    color: var(--blanco);
+    padding: 0 1rem;
+  }
+}
+
+/*MAIN*/
+.nucleus {
+  margin-top: 3rem;
+}
+.nucleus__titulo {
+  margin-top: 0;
+}
+.nucleus__grid {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 768px) {
+  .nucleus__grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 5rem;
+    align-items: center;
+  }
+}
+
+.listado__elemento {
+  /*Sombreado horizontal, sombreado vertical, y que tan borroso es*/
+  /*
+        Sombreado horizontal <= Que tan cercano en horizontal esta
+        Sombreado vertical  <= Que tan cercano en vertical esta
+        Cuando de largo queremos cubrir
+        Grosor o dureza de la sombra, que tan negro es <= Que tan cerca esta el foco
+        El color y transparencia
+    */
+  box-shadow: 0px 0px 15px 3px rgb(0 0 0 / 0.5);
+  margin-bottom: 5rem;
+  padding: 2rem;
+  transition-property: transform;
+  transition-duration: 0.3s;
+  background-color: var(--blanco);
+}
+.listado__elemento:hover {
+  transform: scale(1.1);
+}
+@media (min-width: 768px) {
+  .listado__elemento--2col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.listado__titulo {
+  font-size: 3rem;
+  color: var(--primario);
+  margin: 0;
+}
+.listado__numero {
+  font-size: 6rem;
+  margin: 0;
+  color: var(--primario);
+  font-weight: 900;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .listado__numero {
+    flex-basis: 20rem;
+    text-align: right;
+    font-size: 4rem;
+  }
+}
+.listado__texto {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/*SEGURIDAD*/
+.seguridad {
+  background-color: var(--primario);
+  padding: 20rem 0;
+  margin: 10rem 0;
+
+  /*
+        Con esto logramos que sea una posicion base a la que estaran los demas. Todos nuestros 
+        elementos hijos que queramos usar con un position deberan de ser absolutes.
+        Un absolute no se puede usar sin un relative, el absolute sin relative va a tomar como
+        position relative el body, entonces, siempre es recomendable poner al padre como una 
+        position relativa (para asi tenerlo de base).
+        Podemos usar las propiedades top, bottom, left y right. 
+        Top > bottom
+        Left > Right
+    */
+  position: relative;
+
+  /*CON ESTO EVITAMOS QUE HAYA SCROLL A LOS LADOS AUN CUANDO SUPERE EL WIDTH DE LA PANTALLA*/
+  overflow: hidden;
+}
+
+/*Esto significa que al empezar seguridad y al finalizar seguridad agregara las siguientes propiedades*/
+.seguridad::before,
+.seguridad::after {
+  background-color: var(--blanco);
+  content: "";
+  height: 20rem;
+  width: 120%; /*120% debido a que si ponemos 100% las esquinas no cubriran y dejaran area sin pintar*/
+  position: absolute; /*Con esto indicamos que sera absoluta con relacion a la relativa*/
+}
+
+.seguridad::before {
+  /*Se tiene la msima cantidad de padding de la clase seguridad para estar en la parte mas alta*/
+  top: -10rem;
+  left: -5rem;
+  transform: rotate(3deg);
+}
+.seguridad::after {
+  transform: rotate(-3deg);
+  /*Se tiene la msima cantidad de padding de la clase seguridad para estar en la parte mas baja*/
+  bottom: -10rem;
+  left: -5rem;
+}
+.seguridad__titulo {
+  color: var(--blanco);
+}
+@media (min-width: 768px) {
+  .seguridad__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem;
+    align-items: center;
+  }
+}
+
+/*COMISIONES*/
+@media (min-width: 768px) {
+  .comisiones__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5rem;
+    align-items: flex-end;
+  }
+}
+@media (min-width: 998px) {
+  .comisiones__grid {
+    align-items: center;
+  }
+}
+.comisiones__texto {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .comisiones__texto {
+    text-align: left;
+  }
+}
+
+/*TESTIMONIALES*/
+.testimoniales {
+  background-color: var(--primario);
+  padding-bottom: 1rem;
+}
+.testimoniales__titulo {
+  margin-top: 0;
+  padding-top: 3rem;
+  color: var(--blanco);
+}
+@media (min-width: 768px) {
+  .testimoniales__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3rem;
+  }
+}
+.testimonial {
+  background-image: url("../img/comilla.png");
+  background-repeat: no-repeat;
+  background-position-x: 1rem;
+  background-position-y: 2rem;
+  box-shadow: 0px 0px 15px 3px rgb(0 0 0 / 0.5);
+  background-size: 3rem;
+  background-color: var(--blanco);
+  padding: 2rem;
+  padding-left: 4.5rem;
+  margin-bottom: 3rem;
+}
+.testimonial__autor {
+  color: var(--primario);
+  font-weight: 700;
+  text-align: right;
+}
+
+
+
+/*FOOTER*/
+.footer{
+    background-color: #5a30a0;
+    padding: 3rem 0;
+}
+@media (min-width: 768px) {
+    .footer__grid{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.footer__logo{
+    width: 40%;
+    margin: 0 auto 2rem;
+}
+@media (min-width: 768px) {
+    .footer__logo{
+        margin: 0;
+        width: 20%;
+    }
+}
